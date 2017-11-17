@@ -12,12 +12,12 @@ class XicidailiSpider(scrapy.Spider):
     def parse(self, response):
         ips = re.findall('<td>(\d+\.\d+\.\d+\.\d+)</td>', response.text)
         ports = re.findall('<td>(\d+)</td>', response.text)
-        types = re.findall('<td class="country">([^<]+)</td>', response.text)
-        protocols = re.findall('<td>(HTTPS?)</td>', response.text)
-        for ip, port, _type, protocol in zip(ips, ports, types, protocols):
+        #types = re.findall('<td class="country">([^<]+)</td>', response.text)
+        #protocols = re.findall('<td>(HTTPS?)</td>', response.text)
+        for ip, port in zip(ips, ports):
             yield ProxyPoolItem({
                 'ip': ip,
-                'protocol': protocol,
-                'port': port,
-                'types': _type
+                #'protocol': protocol,
+                'port': port
+                #'types': _type
             })
