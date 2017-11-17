@@ -20,3 +20,4 @@ class ProxyPoolItem(scrapy.Item):
     speed = scrapy.Field()
     port = scrapy.Field()
     types = scrapy.Field()
+    checkTime = scrapy.Field()

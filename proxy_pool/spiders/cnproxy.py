@@ -4,7 +4,7 @@ import re
 from proxy_pool.items import ProxyPoolItem
 
 
-class XicidailiSpider(scrapy.Spider):
+class CnProxySpider(scrapy.Spider):
     name = 'cnproxy'
     allowed_domains = ['cn-proxy.com']
     start_urls = ['http://cn-proxy.com/']
@@ -12,12 +12,14 @@ class XicidailiSpider(scrapy.Spider):
     def parse(self, response):
         ips = re.findall('<td>(\d+\.\d+\.\d+\.\d+)</td>', response.text)
         ports = re.findall('<td>(\d+)</td>', response.text)
+        checkTimes = re.findall('<td>(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})</td>', response.text)
         #types = re.findall('<td class="country">([^<]+)</td>', response.text)
         #protocols = re.findall('<td>(HTTPS?)</td>', response.text)
-        for ip, port in zip(ips, ports):
+        for ip, port,checkTime in zip(ips, ports, checkTimes):
             yield ProxyPoolItem({
                 'ip': ip,
                 #'protocol': protocol,
-                'port': port
+                'port': port,
+                'checkTime': checkTime
                 #'types': _type
             })
