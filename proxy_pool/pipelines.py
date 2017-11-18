@@ -28,5 +28,5 @@ class ProxyPoolPipeline(object):
         self.client.close()
 
     def process_item(self, item, spider):
-        #self.db['proxys'].insert_one(dict(item))
+        self.db['proxys'].insert_one(dict(item))
         return item
