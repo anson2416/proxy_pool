@@ -102,6 +102,9 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+<<<<<<< HEAD
 
 # xxxxx ignore list
+=======
+>>>>>>> 69375d95c6f0d014018c302d48081090390fd6bf
 .idea/
