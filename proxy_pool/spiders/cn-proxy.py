@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# author: Bobo
 import re
 import scrapy
 from proxy_pool.items import ProxyPoolItem
