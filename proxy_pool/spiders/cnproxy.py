@@ -15,6 +15,7 @@ class CnProxySpider(scrapy.Spider):
 
         for ip, port in zip(ips, ports):
             yield ProxyPoolItem({
+                'website': 'cn-proxy.com',
                 'ip': ip,
                 'port': port
             })
