@@ -13,9 +13,11 @@ class CnProxySpider(scrapy.Spider):
     def parse(self, response):
         ips = re.findall('<td>(\d+\.\d+\.\d+\.\d+)</td>', response.text)
         ports = re.findall('<td>(\d+)</td>', response.text)
+        address = re.findall('<td>(\w+)</td>', response.text)
 
-        for ip, port in zip(ips, ports):
+        for ip, port, addr in zip(ips, ports, address):
             yield ProxyPoolItem({
+                'address' : addr,
                 'website': 'cn-proxy.com',
                 'ip': ip,
                 'port': port
