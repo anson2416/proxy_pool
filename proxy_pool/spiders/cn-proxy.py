@@ -17,8 +17,11 @@ class CnProxySpider(scrapy.Spider):
 
         for ip, port, addr in zip(ips, ports, address):
             yield ProxyPoolItem({
-                'address' : addr,
+                'protocol':'',
                 'website': 'cn-proxy.com',
+                'address' : addr,
+                'score':'',
                 'ip': ip,
-                'port': port
+                'port': port,
+                'types':''
             })

@@ -37,5 +37,7 @@ class KuaiSpider(scrapy.Spider):
                     item['address'] = data[3]
                     item['website'] = 'www.cnproxy.com'
                     item['port'] = ports[idx_ports]
+                    item['score']=''
+                    item['types']=''
                     idx_ports=idx_ports+1
                     yield item
